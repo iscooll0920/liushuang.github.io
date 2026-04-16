@@ -242,7 +242,7 @@ body{
     </div>
 </div>
 
-<!-- 8张照片展示 -->
+<!-- 8张照片展示 - 一行一张，撑满宽度 -->
 <div class="container">
   <div class="section">
     <span class="icon">📷</span>
@@ -250,22 +250,21 @@ body{
   </div>
 
   <div style="
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 16px;
     padding: 15px 0;
   ">
-    <img src="01.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 1; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    <img src="02.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 1; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    <img src="03.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 1; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    <img src="04.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 1; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    <img src="05.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 1; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    <img src="06.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 1; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    <img src="07.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 1; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    <img src="08.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 1; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="01.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 16/9; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="02.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 16/9; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="03.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 16/9; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="04.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 16/9; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="05.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 16/9; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="06.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 16/9; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="07.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 16/9; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="08.jpg" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 16/9; border: 3px solid #fff350; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
   </div>
 </div>
-
 <script>
 document.addEventListener('mousemove',function(e){
     let particle = document.createElement('div');
