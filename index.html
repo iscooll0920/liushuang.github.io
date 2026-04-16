@@ -55,26 +55,61 @@ body{
     100%{transform: scale(0); opacity: 0;}
 }
 
-/* 修复：移除 flex，避免文字竖排 */
+/* 霓虹流光外框 */
+.neon-box {
+  position: relative;
+  border-radius: 20px;
+  z-index: 2;
+}
+.neon-box::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 22px;
+  background: linear-gradient(60deg, #ff0080, #8000ff, #00bfff, #ff0080);
+  background-size: 300% 300%;
+  z-index: -2;
+  animation: neonFlow 6s linear infinite;
+  opacity: 0.8;
+}
+@keyframes neonFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.neon-box::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 20px;
+  background: rgba(255, 105, 180, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+/* 悬浮发光 */
+.neon-box:hover::before {
+  filter: blur(10px);
+  opacity: 1;
+}
+
 .container{
     width: 90%;
     max-width: 1200px;
-    margin: 0 auto 30px;
-    background-color: rgba(255, 105, 180, 0.5);
+    margin: 0 auto 40px;
     padding: 42px 36px;
-    border-radius: 20px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.1);
     position: relative;
-    z-index: 2;
-    backdrop-filter: blur(4px);
 }
 
-/* 内容居中、不拉伸 */
 .container > * {
     max-width: 800px;
     margin: 0 auto;
 }
 
+/* 动态描边线条 —— 已删除 */
 .section{
     display: flex;
     align-items: flex-start;
@@ -86,11 +121,17 @@ body{
     padding: 6px 10px;
     border-radius: 10px;
     position: relative;
+    border: none; /* 去掉边框 */
 }
+/* 去掉动态描边 */
+.section::before {
+  display: none;
+}
+
 .section:hover{
     background: rgba(255,255,255,0.2);
     transform: translateX(8px) scale(1.03);
-    box-shadow: 0 4px 12px rgba(255, 243, 80, 0.15);
+    box-shadow: 0 0 18px #fff350, 0 4px 12px rgba(255, 243, 80, 0.3);
 }
 .section:active{
     transform: translateX(8px) scale(1.01);
@@ -123,7 +164,6 @@ body{
     to{opacity:1;transform:translateY(0);}
 }
 
-/* 呼吸灯（只在第一个标题） */
 .breath-light {
   width: 8px;
   height: 8px;
@@ -136,6 +176,41 @@ body{
 @keyframes breath {
   0% { opacity: 0.3; transform: scale(0.8); }
   100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* 图片霓虹边框 */
+.img-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0;
+}
+.img-item {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+  border: 3px solid transparent;
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(60deg, #ff0080, #8000ff, #00bfff, #ff0080) border-box;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: all 0.4s ease;
+  animation: imgNeon 6s linear infinite;
+}
+@keyframes imgNeon {
+  0% { border-image-source: linear-gradient(60deg, #ff0080, #8000ff, #00bfff, #ff0080); }
+  50% { border-image-source: linear-gradient(60deg, #00bfff, #ff0080, #8000ff, #00bfff); }
+  100% { border-image-source: linear-gradient(60deg, #ff0080, #8000ff, #00bfff, #ff0080); }
+}
+.img-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 32px rgba(120,80,255,0.6), 0 0 20px rgba(255,0,120,0.4);
+}
+.img-item:nth-child(odd):hover {
+  transform: scale(1.03) rotate(0.3deg);
+}
+.img-item:nth-child(even):hover {
+  transform: scale(1.03) rotate(-0.3deg);
 }
 </style>
 </head>
@@ -155,8 +230,8 @@ body{
 <div class="fall" style="left:84%;animation-duration:11s;font-size:18px;">🔧</div>
 <div class="fall" style="left:92%;animation-duration:13s;font-size:20px;">🌿</div>
 
-<!-- 中文部分 - 已修复 container -->
-<div class="container">
+<!-- 中文 -->
+<div class="neon-box container">
   <div class="section">
       <div class="breath-light"></div>
       <span class="icon">📡</span>
@@ -199,8 +274,8 @@ body{
   </div>
 </div>
 
-<!-- 英文部分 -->
-<div class="container">
+<!-- 英文 -->
+<div class="neon-box container">
     <div class="section">
         <span class="icon">📡</span>
         <span class="highlight big-title">Hello Everyone!</span>
@@ -242,29 +317,25 @@ body{
     </div>
 </div>
 
-<!-- 8张照片展示 · 一行一张 · 高级特效版 -->
-<div class="container">
+<!-- 照片 -->
+<div class="neon-box container">
   <div class="section">
     <span class="icon">📷</span>
     <span class="highlight big-title">My QSL & Life</span>
   </div>
 
-  <div style="
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px 0;
-  ">
-    <img src="01.jpg" style="width:100%; border-radius:16px; object-fit:cover; aspect-ratio:16/9; border:3px solid #fff350; box-shadow:0 8px 24px rgba(0,0,0,0.3); transition:all 0.4s ease;" onmouseover="this.style.transform='scale(1.03) rotate(0.3deg)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)';">
-    <img src="02.jpg" style="width:100%; border-radius:16px; object-fit:cover; aspect-ratio:16/9; border:3px solid #fff350; box-shadow:0 8px 24px rgba(0,0,0,0.3); transition:all 0.4s ease;" onmouseover="this.style.transform='scale(1.03) rotate(-0.3deg)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)';">
-    <img src="03.jpg" style="width:100%; border-radius:16px; object-fit:cover; aspect-ratio:16/9; border:3px solid #fff350; box-shadow:0 8px 24px rgba(0,0,0,0.3); transition:all 0.4s ease;" onmouseover="this.style.transform='scale(1.03) rotate(0.3deg)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)';">
-    <img src="04.jpg" style="width:100%; border-radius:16px; object-fit:cover; aspect-ratio:16/9; border:3px solid #fff350; box-shadow:0 8px 24px rgba(0,0,0,0.3); transition:all 0.4s ease;" onmouseover="this.style.transform='scale(1.03) rotate(-0.3deg)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)';">
-    <img src="05.jpg" style="width:100%; border-radius:16px; object-fit:cover; aspect-ratio:16/9; border:3px solid #fff350; box-shadow:0 8px 24px rgba(0,0,0,0.3); transition:all 0.4s ease;" onmouseover="this.style.transform='scale(1.03) rotate(0.3deg)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)';">
-    <img src="06.jpg" style="width:100%; border-radius:16px; object-fit:cover; aspect-ratio:16/9; border:3px solid #fff350; box-shadow:0 8px 24px rgba(0,0,0,0.3); transition:all 0.4s ease;" onmouseover="this.style.transform='scale(1.03) rotate(-0.3deg)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)';">
-    <img src="07.jpg" style="width:100%; border-radius:16px; object-fit:cover; aspect-ratio:16/9; border:3px solid #fff350; box-shadow:0 8px 24px rgba(0,0,0,0.3); transition:all 0.4s ease;" onmouseover="this.style.transform='scale(1.03) rotate(0.3deg)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)';">
-    <img src="08.jpg" style="width:100%; border-radius:16px; object-fit:cover; aspect-ratio:16/9; border:3px solid #fff350; box-shadow:0 8px 24px rgba(0,0,0,0.3); transition:all 0.4s ease;" onmouseover="this.style.transform='scale(1.03) rotate(-0.3deg)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)';">
+  <div class="img-wrapper">
+    <img class="img-item" src="01.jpg">
+    <img class="img-item" src="02.jpg">
+    <img class="img-item" src="03.jpg">
+    <img class="img-item" src="04.jpg">
+    <img class="img-item" src="05.jpg">
+    <img class="img-item" src="06.jpg">
+    <img class="img-item" src="07.jpg">
+    <img class="img-item" src="08.jpg">
   </div>
 </div>
+
 <script>
 document.addEventListener('mousemove',function(e){
     let particle = document.createElement('div');
