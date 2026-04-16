@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BH3FVJ</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    background-color: #9d9cff;
+    color: #fff;
+    padding: 50px 20px;
+    animation:pageIn 0.8s ease-out;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.fall{
+    position: fixed;
+    top: -10%;
+    z-index: 1;
+    color: rgba(255,255,255,0.5);
+    user-select: none;
+    pointer-events: none;
+    animation: fallAnim linear infinite;
+    font-style: normal !important;
+}
+@keyframes fallAnim{
+    0%{transform: translateY(0) rotate(0deg); opacity: 0;}
+    10%{opacity: 1;}
+    90%{opacity: 1;}
+    100%{transform: translateY(100vh) rotate(360deg); opacity: 0;}
+}
+
+.particle{
+    background: rgba(255, 243, 80, 0.8);
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: particleAnim 1s forwards;
+}
+@keyframes particleAnim{
+    0%{transform: scale(1); opacity: 1;}
+    100%{transform: scale(0); opacity: 0;}
+}
+
+.container{
+    max-width: 800px;
+    margin: 0 auto 30px;
+    background-color: rgba(255, 105, 180, 0.5);
+    padding: 42px 36px;
+    border-radius: 20px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+}
+.section{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 6px 10px;
+    border-radius: 10px;
+    position: relative;
+}
+.section:hover{
+    background: rgba(255,255,255,0.2);
+    transform: translateX(8px) scale(1.03);
+    box-shadow: 0 4px 12px rgba(255, 243, 80, 0.15);
+}
+.section:active{
+    transform: translateX(8px) scale(1.01);
+}
+
+.icon{
+    font-size: 18px;
+    line-height: 1.5;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    font-style: normal !important;
+}
+.section:hover .icon{
+    transform: scale(1.2) rotate(5deg);
+}
+
+.highlight{
+    color: #fff350;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.big-title{
+    font-size: 24px !important;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+}
+@keyframes pageIn{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="fall" style="left:5%;animation-duration:12s;font-size:24px;">📡</div>
+<div class="fall" style="left:12%;animation-duration:10s;font-size:18px;">✨</div>
+<div class="fall" style="left:20%;animation-duration:15s;font-size:20px;">⭐</div>
+<div class="fall" style="left:28%;animation-duration:11s;font-size:16px;">🎨</div>
+<div class="fall" style="left:36%;animation-duration:13s;font-size:22px;">🔧</div>
+<div class="fall" style="left:44%;animation-duration:9s;font-size:17px;">🌿</div>
+<div class="fall" style="left:52%;animation-duration:14s;font-size:19px;">📡</div>
+<div class="fall" style="left:60%;animation-duration:12s;font-size:21px;">✨</div>
+<div class="fall" style="left:68%;animation-duration:10s;font-size:15px;">⭐</div>
+<div class="fall" style="left:76%;animation-duration:16s;font-size:23px;">🎨</div>
+<div class="fall" style="left:84%;animation-duration:11s;font-size:18px;">🔧</div>
+<div class="fall" style="left:92%;animation-duration:13s;font-size:20px;">🌿</div>
+
+<div class="container">
+    <div class="section">
+        <span class="icon">📡</span>
+        <span class="highlight big-title">嗨！你好</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">📍</span>
+        <span>我是刘爽，呼号BH3FVJ，来自契丹文化发祥地，玉龙之乡内蒙古赤峰市翁牛特旗，目前在天津市工作和定居。</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">🎨</span>
+        <span class="highlight">我的工作是一名工业设计师，从小学习绘画，设计家电类和数码产品和交通工具。</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">🔧</span>
+        <span>在广东省佛山市工作的时候偶然的机会接触到无线电，并对此感到兴趣，也可能是因为从小爸爸的工作让我的耳濡目染，他以前是一名家电维修员，去到哪里都会带着我，他在我心中非常的厉害！</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">📜</span>
+        <span><span class="highlight">2023年</span>在天津我参加了业余无线电的考试，并取得操作证，<span class="highlight">2024年</span>我取得了更高一级的B证和短波电台执照，（感谢天津业余无线电协会，他们非常人性化！）从此开启了业余无线电生涯。</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">🎈</span>
+        <span>我的爱好比较广泛，我喜欢绘画和设计，这是我从小到大一直喜欢的，我还偶尔露营、摄影、游泳和玩一下EDC相关的东西。</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">🌿</span>
+        <span>我个人对万物对未知保持敬畏，万物皆有灵，敬畏自然，感受自然，活在当下，虚心学习，诚恳待人。</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">📡</span>
+        <span class="highlight">期待朋友们空中常见！这里是BH3FVJ</span>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <span class="icon">📡</span>
+        <span class="highlight big-title">Hello Everyone!</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">📍</span>
+        <span>I'm Shuang Liu, call sign BH3FVJ. I come from Ongniud Banner, Chifeng City, Inner Mongolia, the hometown of jade dragon. I live and work in Tianjin now.</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">🎨</span>
+        <span class="highlight">I am an industrial designer. I have loved painting since I was a child, and I design home appliances, digital products and vehicles.</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">🔧</span>
+        <span>I got into amateur radio when I was working in Foshan, Guangdong. I developed a passion for it, influenced by my father who was an appliance repairman.</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">📜</span>
+        <span>I took the amateur radio exam in Tianjin in <span class="highlight">2023</span> and got my operator license. I obtained my class B radio license in <span class="highlight">2024</span>.</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">🎈</span>
+        <span>I have a wide range of hobbies. I love painting and designing, which I've enjoyed since childhood. I also like camping, photography, swimming and EDC gadgets.</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">🌿</span>
+        <span>I have a deep respect for all things and the unknown. I believe everything has a spirit. I respect nature, feel nature, live in the moment, and stay humble and sincere.</span>
+    </div>
+
+    <div class="section">
+        <span class="icon">📡</span>
+        <span class="highlight">Hope to meet you on the air! This is BH3FVJ.</span>
+    </div>
+</div>
+
+<script>
+document.addEventListener('mousemove',function(e){
+    let particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.left = e.pageX + 'px';
+    particle.style.top = e.pageY + 'px';
+    document.body.appendChild(particle);
+    setTimeout(()=>particle.remove(),1000);
+});
+</script>
+
+</body>
+</html>
